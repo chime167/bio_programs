@@ -23,14 +23,14 @@ def main():
     s = []
     t = []
 
-    for i in range(len(header)):
-        for j in range(len(sequence)):
+    for i,y in enumerate(header):
+        for j,z in enumerate(sequence):
             if i != j:
                 if sequence[i][-k:] == sequence[j][0:k]:
                     s.append(header[i])
                     t.append(header[j])
     
-    for x in range(len(s)):
+    for x,y in enumerate(s):
         print(s[x], t[x])
 
             

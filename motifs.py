@@ -21,5 +21,6 @@ def main():
     #map applies the str function to each element
     starts = ' '.join(map(str, startlist))
     print(starts)
-
+    results = [(str(match.group(1))) for match in runs]
+    #print(results)
 if __name__ == '__main__': main()
