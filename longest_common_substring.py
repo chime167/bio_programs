@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
+from ast import arg
 import time
 t0 = time.time()
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', help='Enter the filename or path to file')
+    args = parser.parse_args()
     import re
-    with open('rosalind_lcsm.txt') as file:
+    with open(args.filename) as file:
         lis = []
         for line in file:
             line = line.rstrip()
