@@ -1,8 +1,0 @@
->Rosalind_1
-AAATGGG
->Rosalind_2
-GGGTAAA
->Rosalind_3
-GGGTCCC
->Rosalind_4
-AAATCCC
