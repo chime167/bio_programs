@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from ast import arg
-import time
-t0 = time.time()
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser()
@@ -43,5 +43,3 @@ def main():
 
 
 if __name__ == '__main__': print(main())
-t1 = time.time()
-print(t1 - t0)
