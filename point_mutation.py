@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 def main():
     count = 0
-    dna = []
-    f = open('rosalind_hamm.txt')
-    for line in f:
-        dna.append(line.rstrip())
+    with open('rosalind_hamm.txt') as f:
+        dna = [line.rstrip() for line in f]
     s1 = dna[0]
     s2 = dna[1]
     for b1, b2 in zip(s1, s2):
