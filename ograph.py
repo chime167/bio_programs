@@ -42,7 +42,7 @@ def main():
     # for x, y in zip(s, t):
     #     print(x, y)
     for x, y in zip(first_half, second_half):
-        print(x + y[3:] + '\n')
+        print(x + y[k:] + '\n')
 
             
 
