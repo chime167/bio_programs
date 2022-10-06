@@ -27,8 +27,7 @@ def main():
     #this turns the list of dicts into lists of keys and values of interest
     sequence = [sub['seq'] for sub in lis]
     shortest = sorted(sequence, key=len)[0]
-    if all(shortest in seq for seq in sequence):
-        return shortest
+
     r = len(shortest)
 
     for _ in range(r - 1):
