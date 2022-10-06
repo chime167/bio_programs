@@ -31,7 +31,7 @@ def main():
         return shortest
     r = len(shortest)
 
-    for _ in range(r):
+    for _ in range(r - 1):
         r -= 1
         for i in range(len(shortest) - r):
             motif = shortest[i:i+r]
