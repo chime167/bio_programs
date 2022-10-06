@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from ast import arg
 
 
 def main():
@@ -8,8 +7,8 @@ def main():
     parser.add_argument('filename', help='Enter the filename or path to file')
     args = parser.parse_args()
     import re
+    lis = []
     with open(args.filename) as file:
-        lis = []
         for line in file:
             line = line.rstrip()
             #regex where group 1 matches the ID
@@ -25,20 +24,22 @@ def main():
                 seq += line
                 dic['seq'] = seq
     
-        #this turns the list of dicts into lists of keys and values of interest
-        sequence = [sub['seq'] for sub in lis]
-        shortest = sorted(sequence, key=len)[0]
-        r = len(shortest)
-        
-        while r > 0:
-            r -= 1
-            for i in range(len(shortest) - r):
-                motif = shortest[i:i+r]
-                if all(seq.find(motif) >= 0 for seq in sequence):
-                    return motif
-                # full_match = [m for m in motif if all(m in seq for seq in sequence)]
-                # if full_match:
-                #     return full_match[0]
+    #this turns the list of dicts into lists of keys and values of interest
+    sequence = [sub['seq'] for sub in lis]
+    shortest = sorted(sequence, key=len)[0]
+    if all(shortest in seq for seq in sequence):
+        return shortest
+    r = len(shortest)
+
+    for _ in range(r):
+        r -= 1
+        for i in range(len(shortest) - r):
+            motif = shortest[i:i+r]
+            if all(seq.find(motif) >= 0 for seq in sequence):
+                return motif
+            # full_match = [m for m in motif if all(m in seq for seq in sequence)]
+            # if full_match:
+            #     return full_match[0]
 
 
 
