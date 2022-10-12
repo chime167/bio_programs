@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+import argparse
 
 
 def main():
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='Enter the filename or path to file')
     args = parser.parse_args()
@@ -23,9 +23,12 @@ def main():
                 #populates the seq variable before updating the dictionary
                 seq += line
                 dic['seq'] = seq
-    
+    return lis
+
+
+def find_longest_sub(lst_of_dicts):
     #this turns the list of dicts into lists of keys and values of interest
-    sequence = [sub['seq'] for sub in lis]
+    sequence = [sub['seq'] for sub in lst_of_dicts]
     shortest = sorted(sequence, key=len)[0]
 
     r = len(shortest)
@@ -42,4 +45,5 @@ def main():
 
 
 
-if __name__ == '__main__': print(main())
+if __name__ == '__main__':
+    print(find_longest_sub(main()))
