@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
+import re
+import argparse
+
+    
 def main():
-    import re
-    import argparse
+    '''Program that finds all instances of a substring in a DNA sequence.
+    CLI parameters:
+        filename: the file containing the DNA sequence.
+        motif: the substring you want to look for
+    The program provides the indexes at which the substring begins
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='Enter the filename or path to file')
     parser.add_argument('motif', help='Enter the motif to be searched for')
@@ -15,13 +23,11 @@ def main():
 
     #this regex finds all occurences of pattern *including overlap*
     runs = re.finditer(rf'(?={t})', s)
-    startlist = [(m.start() + 1) for m in runs]
-    #+1 bc Python starts at 0 - Rosalind example starts at 1
+    startlist = [m.start() for m in runs]
+    
 
     #converts list of starts to space separated string
     #map applies the str function to each element
     starts = ' '.join(map(str, startlist))
     print(starts)
-    results = [(str(match.group(1))) for match in runs]
-    #print(results)
 if __name__ == '__main__': main()
