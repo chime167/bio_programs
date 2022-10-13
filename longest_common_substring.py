@@ -3,6 +3,10 @@ import argparse
 
 
 def main():
+    '''Program that finds the longest common substring between a set of DNA sequences.
+    CLI parameters:
+        filename: the FASTA file or FASTA style file to pass to the program
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='Enter the filename or path to file')
     args = parser.parse_args()
