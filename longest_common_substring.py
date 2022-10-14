@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import re
 
 
 def main():
@@ -10,7 +11,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='Enter the filename or path to file')
     args = parser.parse_args()
-    import re
     lis = []
     with open(args.filename) as file:
         for line in file:
