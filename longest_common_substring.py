@@ -33,7 +33,7 @@ def main():
 def find_longest_sub(lst_of_dicts):
     #this turns the list of dicts into lists of keys and values of interest
     sequence = [sub['seq'] for sub in lst_of_dicts]
-    shortest = sorted(sequence, key=len)[0]
+    shortest = min(sequence, key=len)
 
     r = len(shortest)
 
