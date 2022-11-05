@@ -41,7 +41,7 @@ def find_longest_sub(lst_of_dicts):
         r -= 1
         for i in range(len(shortest) - r):
             motif = shortest[i:i+r]
-            if all(seq.find(motif) >= 0 for seq in sequence):
+            if all(motif in seq for seq in sequence):
                 return motif
             # full_match = [m for m in motif if all(m in seq for seq in sequence)]
             # if full_match:
