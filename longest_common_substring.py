@@ -35,12 +35,13 @@ def find_longest_sub(lst_of_dicts):
     sequence = [sub['seq'] for sub in lst_of_dicts]
     shortest = min(sequence, key=len)
 
-    r = len(shortest)
+    outer_loop = len(shortest)
+    inner_loop = outer_loop
 
-    for _ in range(r - 1):
-        r -= 1
-        for i in range(len(shortest) - r):
-            motif = shortest[i:i+r]
+    for _ in range(outer_loop - 1):
+        outer_loop -= 1
+        for i in range(inner_loop - outer_loop):
+            motif = shortest[i:i+outer_loop]
             if all(motif in seq for seq in sequence):
                 return motif
             # full_match = [m for m in motif if all(m in seq for seq in sequence)]
