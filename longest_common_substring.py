@@ -11,28 +11,24 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='Enter the filename or path to file')
     args = parser.parse_args()
-    lis = []
+    result_dict = {}
+    current_header = None
     with open(args.filename) as file:
         for line in file:
             line = line.rstrip()
             #regex where group 1 matches the ID
             m = re.match(r'>([\s\S]+)', line)
             if m:
-                #makes a dict to store 2 fields of interest
-                dic = {'name': m.group(1), 'seq': None}
-                #ensures the seq variable is emptied for each match in the file
-                seq = ''
-                lis.append(dic)
+                current_header = m.group(1)
+                result_dict[current_header] = ''
             else:
-                #populates the seq variable before updating the dictionary
-                seq += line
-                dic['seq'] = seq
-    return lis
+                result_dict[current_header] += line
+
+    return result_dict
 
 
-def find_longest_sub(lst_of_dicts):
-    #this turns the list of dicts into lists of keys and values of interest
-    sequence = [sub['seq'] for sub in lst_of_dicts]
+def find_longest_sub(dicts):
+    sequence = dicts.values()
     shortest = min(sequence, key=len)
 
     outer_loop = len(shortest)
